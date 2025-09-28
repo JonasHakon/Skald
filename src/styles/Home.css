@@ -2,7 +2,7 @@
 
 /* Home.css */
 .home-section {
-  background-color: var(--color-black); /* fallback if image not loaded */
+  background-color: var(--color-black); /* fallback if image not loaded Testing deploy*/
   width: 100%;
   overflow: hidden;
 }
