@@ -9,7 +9,7 @@ export type ImageRef = {
   hotspot?: { x: number; y: number; height: number; width: number };
 };
 
-export type Person = {
+export type Artist = {
   _id: string;
   name: string;
   slug?: Slug;
@@ -31,9 +31,9 @@ export type Work = {
   picture?: ImageRef;
   purchaseLink?: string;
   videoLink?: string;
-  director?: Person;
-  actors?: Person[];
-  crew?: Person[];
+  director?: Artist;
+  actors?: Artist[];
+  crew?: Artist[];
   reviews?: Review[];
   testimonies?: Testimony[];
 };

@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useState} from 'react'
 import {Link, useSearchParams} from 'react-router-dom'
-import {Layout} from '../components/Layout'
+import {Navigation} from '../components/Navigation'
 import {sanity} from '../api/sanityClient'
 import {urlFor, isImageRef} from '../api/image'
 import type {ImageRef, Slug} from '../types'
@@ -22,7 +22,7 @@ const ALL_PEOPLE_QUERY = `
 }
 `
 
-export function PeopleList() {
+export function ArtistsList() {
   const [allPeople, setAllPeople] = useState<PersonCard[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -60,7 +60,7 @@ export function PeopleList() {
   const items = filtered.slice(offset, offset + pageSize)
 
   return (
-    <Layout>
+    <Navigation>
       <section className="page-section">
         <header className="page-section">
           <h1 className="page-title">People</h1>
@@ -87,7 +87,7 @@ export function PeopleList() {
           </>
         )}
       </section>
-    </Layout>
+    </Navigation>
   )
 }
 

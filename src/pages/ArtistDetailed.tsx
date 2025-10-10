@@ -1,7 +1,7 @@
 // src/pages/PeopleDetailed.tsx
 import {useEffect, useState} from 'react'
 import {useParams, Link} from 'react-router-dom'
-import {Layout} from '../components/Layout'
+import {Navigation} from '../components/Navigation'
 import {sanity} from '../api/sanityClient'
 import {urlFor, isImageRef} from '../api/image'
 import type {ImageRef, Slug} from '../types'
@@ -61,7 +61,7 @@ const WORKS_FOR_PERSON = `
 
 // ---- Component ----------------------------------------------------------
 
-export function PeopleDetailed() {
+export function ArtistDetailed() {
   const {slug} = useParams()
   const [person, setPerson] = useState<Person | null>(null)
   const [works, setWorks] = useState<WorksForPerson | null>(null)
@@ -91,7 +91,7 @@ export function PeopleDetailed() {
   }, [slug])
 
   return (
-    <Layout>
+    <Navigation>
       <section className="page-section">
         {loading && <p className="loading">Loading…</p>}
         {error && <p className="error">{error}</p>}
@@ -126,7 +126,7 @@ export function PeopleDetailed() {
           </>
         )}
       </section>
-    </Layout>
+    </Navigation>
   )
 }
 

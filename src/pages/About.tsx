@@ -1,13 +1,13 @@
 // src/pages/AboutUs.tsx
-import {Layout} from '../components/Layout'
+import {Navigation} from '../components/Navigation'
 
-export function AboutUs() {
+export function About() {
   return (
-    <Layout>
+    <Navigation>
       <section className="page-section">
         <h1 className="page-title">About Us</h1>
         <p className="page-subtitle">Learn more about our theater company and mission</p>
       </section>
-    </Layout>
+    </Navigation>
   )
 }

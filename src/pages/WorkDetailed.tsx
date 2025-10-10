@@ -1,10 +1,10 @@
 // src/pages/WorkDetailed.tsx
 import {useEffect, useState} from 'react'
 import {useParams, Link} from 'react-router-dom'
-import {Layout} from '../components/Layout'
+import {Navigation} from '../components/Navigation'
 import {sanity} from '../api/sanityClient'
 import {urlFor, isImageRef} from '../api/image'
-import type {Work, Person} from '../types'
+import type {Work, Artist} from '../types'
 
 const QUERY = `
 *[_type=="work" && slug.current==$slug][0]{
@@ -54,7 +54,7 @@ export function WorkDetailed() {
   }, [slug])
 
   return (
-    <Layout>
+    <Navigation>
       <section className="page-section">
         {loading && <p className="loading">Loading…</p>}
         {error && <p className="error">{error}</p>}
@@ -140,7 +140,7 @@ export function WorkDetailed() {
           </>
         )}
       </section>
-    </Layout>
+    </Navigation>
   )
 }
 
@@ -175,7 +175,7 @@ function PeopleSections({work}: {work: Work}) {
   )
 }
 
-function PersonCard({p}: {p: Person}) {
+function PersonCard({p}: {p: Artist}) {
   const slug = p.slug?.current
   const img = isImageRef(p.picture) ? urlFor(p.picture).width(200).height(200).fit('crop').url() : undefined
   return (

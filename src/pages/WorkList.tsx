@@ -1,6 +1,6 @@
 import {useEffect, useMemo, useState} from 'react'
 import {Link, useSearchParams} from 'react-router-dom'
-import {Layout} from '../components/Layout'
+import {Navigation} from '../components/Navigation'
 import {sanity} from '../api/sanityClient'
 import {urlFor, isImageRef} from '../api/image'
 import type {ImageRef, Slug} from '../types'
@@ -75,7 +75,7 @@ export function WorkList() {
   const totalPages = total ? Math.max(1, Math.ceil(total / pageSize)) : 1
 
   return (
-    <Layout>
+    <Navigation className='dark-theme'>
       <section className="page-section">
         <header className="page-section">
           <h1 className="page-title">Works</h1>
@@ -101,7 +101,7 @@ export function WorkList() {
           </>
         )}
       </section>
-    </Layout>
+    </Navigation>
   )
 }
 
