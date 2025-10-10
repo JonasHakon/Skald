@@ -26,6 +26,7 @@ body {
 .main-content {
   background-color: var(--color-secondary);
   color: var(--color-primary);
+  margin-top: 100px;
 }
 
 /* ===== Header Navigation ===== */
