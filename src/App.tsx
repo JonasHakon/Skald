@@ -9,6 +9,8 @@ import {WorkDetailed} from './pages/WorkDetailed'
 import {ArtistDetailed} from './pages/ArtistDetailed'
 import './styles/App.css'
 
+// ---- Component ----------------------------------------------------------
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -22,7 +24,7 @@ export default function App() {
 
         {/* detailed */}
         <Route path="/works/:slug" element={<WorkDetailed />} />
-        <Route path="/people/:slug" element={<ArtistDetailed />} />
+        <Route path="/artists/:slug" element={<ArtistDetailed />} />
 
         {/* fallback */}
         <Route path="*" element={<Home />} />

@@ -1,0 +1,108 @@
+.contact-page .page-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 100%;
+}
+
+.contact-page .page-title {
+    font-size: 160; 
+    max-width: 500px;
+    font-weight: 400;
+    margin: 0;
+    min-height: 100%;
+}
+
+.contact-page .contact-form {
+    font-family: var(--font-secondary);
+    font-size: 18px;
+    font-weight: 300;
+    width: 500px;
+    min-height: 100%;
+}
+
+.contact-page .form-group {
+    position: relative;
+    width: 100%;
+    margin: 30px 0px;
+}
+
+.contact-page input, textarea {
+  background: transparent;  
+  border: none;
+  border-bottom: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 10px 0;
+  outline: none;
+  width: 100%;
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.contact-page label {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 100%;
+    color: #6d6d6d;
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+.contact-page input:focus + label,
+.contact-page input:not(:placeholder-shown) + label,
+.contact-page textarea:focus + label,
+.contact-page textarea:not(:placeholder-shown) + label {
+  top: -22px;
+}
+
+.contact-page textarea.autosize {
+  overflow: hidden;   /* no scrollbar */
+  resize: none;       /* remove manual resize handle */
+}
+
+.contact-page .submit-button {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: 0.6rem 1rem;
+  font: inherit;
+  line-height: 1;
+  border-radius: 0px;
+  cursor: pointer;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); 
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.contact-page .submit-button:hover,
+.contact-page .submit-button:focus {
+  transform: translateY(-2px);
+  outline: none;                    /* kill default ring */
+  box-shadow: none;
+  border-radius: 0 !important;      /* belt-and-suspenders */
+}
+
+
+.contact-page input:-webkit-autofill,
+.contact-page textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-secondary) inset !important; /* paint dark bg */
+  -webkit-text-fill-color: var(--color-primary) !important;                  /* force text color */
+  border-bottom-color: var(--color-primary) !important;                       /* keep underline */
+  transition: background-color 9999s ease-out 0s;                             /* avoid yellow flash */
+}
+
+.contact-page input:-webkit-autofill:focus,
+.contact-page input:-webkit-autofill:hover,
+.contact-page textarea:-webkit-autofill:focus,
+.contact-page textarea:-webkit-autofill:hover {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-secondary) inset !important;
+  -webkit-text-fill-color: var(--color-primary) !important;
+}

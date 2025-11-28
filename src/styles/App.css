@@ -9,6 +9,8 @@
   /* Fonts */
   --font-primary: 'Playfair Display', serif;
   --font-secondary: 'Montserrat', sans-serif;
+
+  min-height: 100%;
 }
 
 .dark-theme {
@@ -16,17 +18,30 @@
   --color-secondary: #181818;
 }
 
+p {
+    white-space: pre-line;
+}
+
 body {
   margin: 0;
+  padding-top: 100px;
+  box-sizing: border-box;
   font-family: var(--font-primary);
   background-color: var(--color-secondary);
   color: var(--color-primary);
+  min-height: 100%;
 }
 
 .main-content {
   background-color: var(--color-secondary);
   color: var(--color-primary);
-  margin-top: 100px;
+  min-height: 100%;
+}
+
+p, dt, dd {
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  font-weight: 100;
 }
 
 /* ===== Header Navigation ===== */
@@ -55,7 +70,7 @@ body {
   background-color: var(--color-secondary);
   font-family: var(--font-secondary);
   font-size: 25;
-  font-weight: 300;
+  font-weight: 100;
   transform: translateY(0);
   transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); 
 }

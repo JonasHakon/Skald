@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 interface NavigationProps {
   children: ReactNode;
   className?: string;
-}
+} 
 
 export function Navigation({ children, className }: NavigationProps) {
   return (

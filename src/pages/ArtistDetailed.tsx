@@ -1,70 +1,46 @@
 // src/pages/PeopleDetailed.tsx
 import {useEffect, useState} from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import {Navigation} from '../components/Navigation'
 import {sanity} from '../api/sanityClient'
 import {urlFor, isImageRef} from '../api/image'
-import type {ImageRef, Slug} from '../types'
+import type {WorkCard, Artist} from '../types'
+import '../styles/Artist.css'
+import { WorkCards } from '../components/WorkCards'
 
-// ---- Types ---------------------------------------------------------------
-
-type Person = {
-  _id: string
-  name: string
-  role?: string
-  picture?: ImageRef
-  description?: string
-  slug?: Slug
-}
-
-type WorkCard = {
-  name: string
-  slug?: Slug
-  date?: string
-  venue?: string
-  picture?: ImageRef
-}
-
-type WorksForPerson = {
-  asActor: WorkCard[]
-  asDirector: WorkCard[]
-  asCrew: WorkCard[]
-}
 
 // ---- GROQ ---------------------------------------------------------------
 
 const PERSON_QUERY = `
 *[_type=="person" && slug.current==$slug][0]{
-  _id, name, role, description,
+  _id ,name ,firstName, lastName, description,
   "slug": slug,
-  picture{ _type, asset }
+  picture{ _type, asset },
+  secondPicture{ _type, asset },
+  signaturePicture{ _type, asset },
+  height, eyeColor, hair
 }
 `
 
 // Pull works where this person is involved (actor/director/crew)
 const WORKS_FOR_PERSON = `
-{
-  "asActor": *[_type=="work" && $id in actors[]._ref]|order(date desc){
-    name, "slug": slug, date, venue,
-    picture{ _type, asset }
-  },
-  "asDirector": *[_type=="work" && director._ref==$id]|order(date desc){
-    name, "slug": slug, date, venue,
-    picture{ _type, asset }
-  },
-  "asCrew": *[_type=="work" && $id in crew[]._ref]|order(date desc){
-    name, "slug": slug, date, venue,
+*[_type == "work" && ($id in actors[]._ref || director._ref == $id || $id in crew[]._ref)]
+  | order(date desc){
+    name,
+    description,
+    // If author is a reference, resolve to the person's name; if it's already a string, return it as-is
+    "author": coalesce(author->name, author),
+    slug,
     picture{ _type, asset }
   }
-}
 `
 
 // ---- Component ----------------------------------------------------------
 
 export function ArtistDetailed() {
   const {slug} = useParams()
-  const [person, setPerson] = useState<Person | null>(null)
-  const [works, setWorks] = useState<WorksForPerson | null>(null)
+  const [person, setPerson] = useState<Artist | null>(null)
+  const [works, setWorks] = useState<WorkCard[] | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -73,12 +49,12 @@ export function ArtistDetailed() {
     ;(async () => {
       try {
         setLoading(true)
-        const p = await sanity.fetch<Person>(PERSON_QUERY, {slug})
+        const p = await sanity.fetch<Artist>(PERSON_QUERY, {slug})
         if (!p) throw new Error('Not found')
         if (!active) return
         setPerson(p)
 
-        const w = await sanity.fetch<WorksForPerson>(WORKS_FOR_PERSON, {id: p._id})
+        const w = await sanity.fetch<WorkCard[]>(WORKS_FOR_PERSON, {id: p._id})
         if (!active) return
         setWorks(w)
       } catch {
@@ -91,69 +67,62 @@ export function ArtistDetailed() {
   }, [slug])
 
   return (
-    <Navigation>
+    <Navigation className='artist-page dark-theme'>
       <section className="page-section">
         {loading && <p className="loading">Loading…</p>}
         {error && <p className="error">{error}</p>}
         {!loading && !error && person && (
           <>
-            <header className="page-section">
-              <div className="flex items-center gap-6">
-                {isImageRef(person.picture) && (
-                  <img
-                    src={urlFor(person.picture).width(300).height(300).fit('crop').url()}
-                    alt={person.name}
-                    className="w-32 h-32 object-cover rounded-lg"
-                    loading="lazy"
-                  />
-                )}
-                <div>
-                  <h1 className="page-title">{person.name}</h1>
-                  {person.role && <p className="page-subtitle">{person.role}</p>}
+            <header className='page-section'>
+              <div className='top-section'>
+                <div className='left-cloumn'>
+                  <div className='picture-section'>
+                    {/* First Picture */}
+                    <div className='firs-picture-row'>
+                      {isImageRef(person.picture) && (
+                        <img src={urlFor(person.picture).width(320).height(320).fit('crop').url()} className='first-picture' alt={person.name} loading="lazy" />
+                      )}
+                      {/* Quick facts if present */}
+                      {(person.height || person.eyeColor || person.hair) && (
+                        <dl>
+                          <div className='height'>
+                            {person.height ? (<><dt>Height</dt><dd>{person.height} cm</dd></>) : null}
+                          </div>
+                          <div className='hair'>
+                            {person.hair ? (<><dt>Hair</dt><dd>{person.hair}</dd></>) : null}
+                          </div>
+                          <div className='eye-color'>
+                            {person.eyeColor ? (<><dt>Eye color</dt><dd>{person.eyeColor}</dd></>) : null}
+                          </div>
+                        </dl>
+                      )}
+                    </div>
+                    {/* Second picture */}
+                    {isImageRef(person.secondPicture) && (
+                      <img src={urlFor(person.secondPicture).width(320).height(320).fit('crop').url()} className='second-picture' alt={`${person.name} – second`} loading="lazy"/>
+                    )}
+                  </div>
+                </div>
+                <div className='right-column'>
+                  {person.description && ( <p>{person.description}</p> )}
                 </div>
               </div>
-            </header>
-
-            {person.description && <p className="page-section max-w-3xl">{person.description}</p>}
-
-            {works && (
-              <div className="page-section">
-                <RoleSection title="As Director" items={works.asDirector} />
-                <RoleSection title="As Actor" items={works.asActor} />
-                <RoleSection title="As Crew" items={works.asCrew} />
+              <div className='artist-name'>
+                <h1 className="first-name">{person.firstName}</h1>
               </div>
-            )}
+            </header>
+            <div className='portfolio'>
+              <h1 className="last-name">{person.lastName}</h1>
+            
+              {works && (
+                <div className="page-section">
+                  <WorkCards items={works} />
+                </div>
+              )}
+            </div>
           </>
         )}
       </section>
     </Navigation>
-  )
-}
-
-// ---- Subcomponents ------------------------------------------------------
-
-function RoleSection({title, items}: {title: string; items: WorkCard[]}) {
-  if (!items?.length) return null
-  return (
-    <section className="page-section">
-      <h2 className="page-title text-2xl">{title}</h2>
-      <div className="grid grid-3">
-        {items.map((w, i) => {
-          const img = isImageRef(w.picture)
-            ? urlFor(w.picture).width(600).fit('max').url()
-            : undefined
-          const s = w.slug?.current
-          return (
-            <article key={`${w.name}-${i}`} className="card">
-              {img && <img src={img} alt={w.name} className="card-image" loading="lazy" />}
-              <h3 className="card-title">
-                {s ? <Link className="link" to={`/works/${s}`}>{w.name}</Link> : w.name}
-              </h3>
-              <p className="card-subtitle">{[w.venue, w.date].filter(Boolean).join(' · ')}</p>
-            </article>
-          )
-        })}
-      </div>
-    </section>
   )
 }

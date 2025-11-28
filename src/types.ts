@@ -10,12 +10,18 @@ export type ImageRef = {
 };
 
 export type Artist = {
-  _id: string;
-  name: string;
+  _id?: string;
+  name?: string;
+  firstName?: string
+  lastName?: string
   slug?: Slug;
-  role?: string;
   picture?: ImageRef;
+  secondPicture?: ImageRef
+  signaturePicture?: ImageRef
   description?: string;
+  height?: number
+  eyeColor?: string
+  hair?: string
 };
 
 export type Review = { rating: 1 | 2 | 3 | 4 | 5; text: string; name: string };
@@ -37,3 +43,11 @@ export type Work = {
   reviews?: Review[];
   testimonies?: Testimony[];
 };
+
+export type WorkCard = {
+  name: string
+  description: string
+  author: string
+  slug?: Slug
+  picture?: ImageRef
+}

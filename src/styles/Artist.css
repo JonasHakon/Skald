@@ -1,0 +1,126 @@
+.artist-page .page-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100%;
+}
+
+.artist-page .top-section {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  margin-bottom: 200px;
+}
+
+.artist-page .left-cloumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.artist-page .right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12vh;
+}
+
+.artist-page .picture-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.artist-page .first-picture {
+  height: 70vh;
+}
+
+.artist-page .second-picture {
+  height: 50%;
+}
+
+.artist-page img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.artist-page .height,
+.artist-page .hair,
+.artist-page .eye-color {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.artist-page .work-page-section {
+  margin-top: 50px;
+}
+
+.portfolio {
+  width: 100%;
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+}
+
+.artist-page .artist-name {
+  width: 100%;
+}
+
+.artist-page .first-name{
+  font-family: var(--font-primary);
+  font-size: 170px;
+  font-weight: 100;
+  margin: 0px 0px -50px 10vh;
+  padding: 0px;
+  -webkit-text-stroke: 2px var(--color-primary); /* Example: 2px wide black outline */
+  z-index: 100;
+
+}
+
+.artist-page .last-name {
+  font-family: var(--font-primary);
+  font-size: 170px;
+  text-align: right;
+  font-weight: 100;
+  margin: -50px 10vh 0px 0px;
+  padding: 0px;
+}
+
+.artist-page .work-card {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: 5%;
+  padding: 20px 0px;
+}
+
+.artist-page .work-card-right-column {
+  padding: 25px 75px 25px 75px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.artist-page .work-card-right-column a {
+  font-family: var(--font-primary);
+  font-size: 50px;
+  font-weight: 300;
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.artist-page .work-card-right-column p {
+  font-weight: 200;
+}
+
+.artist-page .work-card-image {
+  aspect-ratio: 1 / 1;
+  width: 35vw;
+} 
+
+.artist-page .work-card-author {
+  text-align: right;
+}
