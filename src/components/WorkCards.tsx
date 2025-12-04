@@ -8,7 +8,7 @@ export function WorkCards({ items }: { items?: WorkCard[] | null }) {
     <section className="work-page-section">
       <div>
         {items.map((w, i) => {
-          const img = isImageRef(w.picture) ? urlFor(w.picture).width(600).fit('max').url() : undefined
+          const img = isImageRef(w.picture) ? urlFor(w.picture).width(800).fit('max').url() : undefined
           const s = w.slug?.current
           return (
             <article key={`${w.name}-${i}`} className="work-card">

@@ -7,7 +7,7 @@
 /* Slide layout is the max size */
 .swiper-slide {
   width: 340px !important;
-  height: 430px !important;
+  height: 730px !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +23,7 @@
 
 /* Track that is wider than the viewport and shifted left a bit */
 .carousel-track {
-  width: 130vw;          /* extend beyond screen */
-  margin-left: -30vw;    /* shift everything left by 10% of viewport */
+  width: 250vw;          /* extend beyond screen */
+  margin-left: -90vw;    /* shift everything left by 10% of viewport */
 }
+ 

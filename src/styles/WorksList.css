@@ -1,5 +1,17 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .works-title {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.works-title img {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
 }

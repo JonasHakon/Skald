@@ -10,7 +10,8 @@
   --font-primary: 'Playfair Display', serif;
   --font-secondary: 'Montserrat', sans-serif;
 
-  min-height: 100%;
+  /* Heights */
+  --nav-height: 110px; 
 }
 
 .dark-theme {
@@ -85,3 +86,41 @@ p, dt, dd {
   font-size: 50px;
   font-weight: 400;
 }
+
+.nav-icon {
+  width: 100px;   /* adjust as needed */
+  height: 100px;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-link,
+.nav-icon {
+  background: none;   /* make sure nothing adds a background */
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Footer ===== */
+
+.footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 50;
+  height: var(--nav-height);
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
+
+
+/* ===== Compontent styling ===== */
+
+.work-card {
+  display: flex;
+  justify-content: center;
+}
+

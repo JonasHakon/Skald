@@ -89,38 +89,28 @@
   padding: 0px;
 }
 
-.artist-page .work-card {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  margin: 5%;
-  padding: 20px 0px;
+.slide-inner {
+  position: relative;
+  width: 340px;   /* should match slideWidth in JS */
+  height: 430px;  /* height of main image */
 }
 
-.artist-page .work-card-right-column {
-  padding: 25px 75px 25px 75px; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.slide-inner img.signature-image {
+  height: 200px;
+  width: 200px;
 }
 
-.artist-page .work-card-right-column a {
-  font-family: var(--font-primary);
-  font-size: 50px;
-  font-weight: 300;
-  color: var(--color-secondary);
-  text-decoration: none;
+.signature-image {
+  position: absolute;
+  left: 50%;
+  bottom: -180px;   /* below the card area */
+  opacity: 0;      /* invisible when not active */
+  z-index: 1;      /* behind the main image */
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
-.artist-page .work-card-right-column p {
-  font-weight: 200;
-}
-
-.artist-page .work-card-image {
-  aspect-ratio: 1 / 1;
-  width: 35vw;
-} 
-
-.artist-page .work-card-author {
-  text-align: right;
+.signature-image img {
+  height: 20px;
+  width: 20px;
 }
