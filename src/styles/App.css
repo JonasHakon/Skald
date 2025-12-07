@@ -4,7 +4,7 @@
 :root {
   /* Colors */
   --color-primary: #181818;
-  --color-secondary: #ffffff;
+  --color-secondary: #F5F5F5;
 
   /* Fonts */
   --font-primary: 'Playfair Display', serif;
@@ -15,7 +15,7 @@
 }
 
 .dark-theme {
-  --color-primary: #ffffff;
+  --color-primary: #F5F5F5;
   --color-secondary: #181818;
 }
 
@@ -25,7 +25,6 @@ p {
 
 body {
   margin: 0;
-  padding-top: 100px;
   box-sizing: border-box;
   font-family: var(--font-primary);
   background-color: var(--color-secondary);
@@ -36,7 +35,7 @@ body {
 .main-content {
   background-color: var(--color-secondary);
   color: var(--color-primary);
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 p, dt, dd {
@@ -49,10 +48,9 @@ p, dt, dd {
 .navigation {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 50;
   height: var(--nav-height);
   color: var(--color-primary);
-  background-color: var(--color-secondary);
+  background: transparent;
 }
 
 .nav-container {
@@ -88,8 +86,7 @@ p, dt, dd {
 }
 
 .nav-icon {
-  width: 100px;   /* adjust as needed */
-  height: 100px;
+  height: 40px;
   object-fit: contain;
   display: block;
 }
@@ -107,14 +104,6 @@ p, dt, dd {
 
 /* ===== Footer ===== */
 
-.footer {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 50;
-  height: var(--nav-height);
-  color: var(--color-primary);
-  background-color: var(--color-secondary);
-}
 
 
 /* ===== Compontent styling ===== */
@@ -122,5 +111,11 @@ p, dt, dd {
 .work-card {
   display: flex;
   justify-content: center;
+  height: 50vh;
+}
+
+.work-card img {
+  height: 50vh;
+  object-fit: cover;
 }
 

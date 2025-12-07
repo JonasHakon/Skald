@@ -1,0 +1,25 @@
+.section-photo {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-size: cover;        /* fills area, keeps proportions */
+    background-position: center;   /* centers the image */
+    background-repeat: no-repeat;  /* no tiling */
+}
+
+.about-us-text {
+    width: 40vw;
+}
+
+.section-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+}
+
+.about-us-photo {
+  width: 100%;
+}

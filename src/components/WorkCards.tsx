@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import {urlFor, isImageRef} from '../api/image'
 import type {WorkCard} from '../types'
 
@@ -15,17 +14,6 @@ export function WorkCards({ items }: { items?: WorkCard[] | null }) {
               <a href={s}>
                 {img && <img src={img} alt={w.name} className="work-card-image" loading="lazy" />}
               </a>
-              <div className='work-card-right-column'>
-                <div className='work-card-right-column-top'>
-                  <h3 className="work-card-title">
-                    {s ? <Link className="link" to={`/works/${s}`}>{w.name}</Link> : w.name}
-                  </h3>
-                  <p className="work-card-description">{w.description}</p>
-                </div>
-                <div className='work-card-right-column-bottom'>
-                  <p className="work-card-author">{w.author}</p>
-                </div>
-              </div>
             </article>
           )
         })}
