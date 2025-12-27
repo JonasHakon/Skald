@@ -51,7 +51,7 @@ export function ArtistDetailed() {
         setLoading(true)
         const p = await sanity.fetch<Artist>(PERSON_QUERY, {slug})
         if (!p) throw new Error('Not found')
-        if (!active) return
+          if (!active) return
         setPerson(p)
 
         const w = await sanity.fetch<WorkCard[]>(WORKS_FOR_PERSON, {id: p._id})

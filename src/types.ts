@@ -31,18 +31,18 @@ export type Work = {
   _id?: string;
   name: string;
   slug?: Slug;
-  description?: string;
-  date?: string;
   venue?: string;
+  author?: string;
+  date?: string;
   picture?: ImageRef;
+  gallery1?: ImageRef[];
+  gallery2?: ImageRef[];
+  description1?: string;
+  description2?: string;
   purchaseLink?: string;
   videoLink?: string;
-  director?: Artist;
-  actors?: Artist[];
-  crew?: Artist[];
-  reviews?: Review[];
-  testimonies?: Testimony[];
 };
+
 
 export type WorkCard = {
   name: string

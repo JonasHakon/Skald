@@ -21,31 +21,69 @@ export function Carousel({ items }: { items: Artist[] }) {
     const el = containerRef.current;
     if (!el || !swiperRef.current) return;
 
+    const HORIZONTAL_THRESHOLD = 5; // small deadzone for tiny touchpad jitter
+
     const handleWheel = (e: WheelEvent) => {
       const swiper = swiperRef.current;
       if (!swiper) return;
 
-      // Only hijack if we can actually move
+      const { deltaX, deltaY } = e;
+
+      // Only react to *mostly horizontal* scrolls
+      if (Math.abs(deltaX) <= Math.abs(deltaY)) {
+        return; // let normal vertical scroll happen
+      }
+
       const canMoveLeft = !swiper.isBeginning;
       const canMoveRight = !swiper.isEnd;
 
       if (!canMoveLeft && !canMoveRight) return;
 
+      // ignore tiny accidental horizontal movement
+      if (Math.abs(deltaX) < HORIZONTAL_THRESHOLD) return;
+
+      // Now we actually hijack the scroll
       e.preventDefault();
 
-      if (e.deltaY > 0) {
+      if (deltaX > 0 && canMoveRight) {
         swiper.slideNext();
-      } else {
+      } else if (deltaX < 0 && canMoveLeft) {
         swiper.slidePrev();
       }
     };
 
-    // 👇 non-passive listener
+    // non-passive so we can call preventDefault
     el.addEventListener("wheel", handleWheel, { passive: false });
 
-    // Cleanup on unmount
     return () => {
       el.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
+  
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const swiper = swiperRef.current;
+      if (!swiper) return;
+
+      const canMoveLeft = !swiper.isBeginning;
+      const canMoveRight = !swiper.isEnd;
+
+      if (e.key === "ArrowRight" && canMoveRight) {
+        e.preventDefault();
+        swiper.slideNext();
+      } else if (e.key === "ArrowLeft" && canMoveLeft) {
+        e.preventDefault();
+        swiper.slidePrev();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
@@ -55,7 +93,7 @@ export function Carousel({ items }: { items: Artist[] }) {
         <Swiper
           centeredSlides={true}
           slidesPerView="auto"
-          spaceBetween={-165}       // To account for scaling
+          spaceBetween={5}       // To account for scaling
           initialSlide={1}
           onSwiper={(sw) => (swiperRef.current = sw)} // caoture swiper instance
           watchSlidesProgress={true}
@@ -100,7 +138,7 @@ export function Carousel({ items }: { items: Artist[] }) {
               const translateX = direction * (leftover) * pullFactor;
 
               // Main image transform
-              mainImg.style.transform = `translateX(${translateX}px) scale(${scale})`;
+              slide.style.transform = `translateX(${translateX}px) scale(${scale})`;
 
               // Signature image transform
               const inactiveOffsetY = 40;  // further down when inactive

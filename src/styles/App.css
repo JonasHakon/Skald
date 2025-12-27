@@ -11,7 +11,7 @@
   --font-secondary: 'Montserrat', sans-serif;
 
   /* Heights */
-  --nav-height: 110px; 
+  --nav-height: 10vh;
 }
 
 .dark-theme {
@@ -54,12 +54,10 @@ p, dt, dd {
 }
 
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  margin: 3vh 10vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 250px;
 }
 
 .nav-link {
@@ -81,12 +79,12 @@ p, dt, dd {
 
 .nav-link-home {
   font-family: var(--font-primary);
-  font-size: 50px;
+  font-size: 8vh;
   font-weight: 400;
 }
 
 .nav-icon {
-  height: 40px;
+  height: 4vw;
   object-fit: contain;
   display: block;
 }
@@ -101,10 +99,6 @@ p, dt, dd {
   align-items: center;
   justify-content: center;
 }
-
-/* ===== Footer ===== */
-
-
 
 /* ===== Compontent styling ===== */
 

@@ -1,0 +1,209 @@
+@import "swiper/css";
+@import url('https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap');
+
+.work-detailed .swiper-wrapper {
+  align-items: center;
+}
+
+/* Slide layout is the max size */
+.work-detailed .swiper-slide {
+  width: 600px;
+  height: 400vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.75s ease;
+}
+
+/* Image fills the slide, actual size controlled by scale */
+.work-detailed .swiper-slide img {
+  object-fit: cover;
+}
+
+.work-detailed  .text-slide {
+    display: flex;
+    justify-content: right;
+}
+
+.work-detailed  .text-slide-reversed {
+    display: flex;
+    justify-content: left;
+}
+
+.work-detailed  .text-slide p {
+    text-align: right;
+}
+
+.work-detailed  .text-slide-reversed p {
+    text-align: left;
+}
+
+.work-detailed  .text-slide p,
+.work-detailed  .text-slide-reversed p {
+    width: 55%;
+    margin: 30px;
+    font-family: 'Oranienbaum', serif;
+    font-style: Regular;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+ .work-detailed .carousel-viewport {
+  width: 100%;
+  overflow: hidden;  /* this is the key */
+  position: relative;
+}
+
+.work-detailed .carousel-track {
+  margin-left: -25%; /* adjust as needed */
+}
+
+.work-detailed .page-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-text {
+  height: 100vh;
+}
+
+.gallery-1 {
+  height: 500px;
+}
+
+.cast-list {
+  height: 900px;
+}
+
+.cast-img {
+  height: 45vw;
+}
+
+.gallery-2 {
+  height: 500px;
+  margin-top: 15vh;
+  margin-bottom: 20vh;
+}
+
+.video-section {
+  height: 100vh;
+}
+ 
+.work-detailed .video-section {
+  height: 100vh;
+}
+
+.work-detailed .video-embed {
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.work-detailed .header-text img {
+    width: 30vw;
+}
+
+
+/* Cast List Styles */
+
+.work-detailed .cast-box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* true 50/50 */
+  column-gap: 100px;
+  align-items: start;
+}
+
+.work-detailed .left-column {
+  text-align: right;
+}
+
+.work-detailed .right-column {
+  text-align: left;
+}
+
+
+.work-detailed .cast-list h1, .work-detailed .cast-list h2,
+.work-detailed .cast-list h3, .work-detailed .cast-list p {
+  font-family: 'Oranienbaum', serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.work-detailed .cast-list h1 {
+  font-size: 40px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.work-detailed .cast-list h2 {
+  font-size: 24px;
+  margin-top: 0px;
+}
+
+.work-detailed .cast-list p {
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+.work-detailed .cast-list h3 {
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+
+.work-detailed .cast-list a {
+  color: inherit;
+  text-decoration: none;
+} 
+
+.work-detailed .cast-list .role-list {
+  margin-top: 30px;
+}
+
+.work-detailed .cast-img img {
+    width: 100%;
+}
+
+.cast-photo{
+  position: relative;
+  width: 100%;
+}
+
+.cast-photo img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cast-photo .hotspot{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* invisible but clickable */
+  background: transparent;
+}
+
+/* 4 “columns” */
+.cast-photo .hs-1 { left: 0%;  width: 25%; }
+.cast-photo .hs-2 { left: 25%; width: 25%; }
+.cast-photo .hs-3 { left: 75%; width: 25%; }
+
+/* Optional: show on hover while you’re positioning */
+.cast-photo.debug .hotspot{
+  outline: 2px dashed rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.06);
+}
+
+/* Accessibility: visible focus for keyboard users */
+.cast-photo .hotspot:focus-visible{
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
