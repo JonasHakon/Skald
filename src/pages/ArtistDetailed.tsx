@@ -5,7 +5,7 @@ import {Navigation} from '../components/Navigation'
 import {sanity} from '../api/sanityClient'
 import {urlFor, isImageRef} from '../api/image'
 import type {WorkCard, Artist} from '../types'
-import '../styles/Artist.css'
+import '../styles/ArtistDetailed.css'
 import { WorkCards } from '../components/WorkCards'
 
 
@@ -73,44 +73,42 @@ export function ArtistDetailed() {
         {error && <p className="error">{error}</p>}
         {!loading && !error && person && (
           <>
-            <header className='page-section'>
-              <div className='top-section'>
-                <div className='left-cloumn'>
-                  <div className='picture-section'>
-                    {/* First Picture */}
-                    <div className='firs-picture-row'>
-                      {isImageRef(person.picture) && (
-                        <img src={urlFor(person.picture).width(590).height(470).fit('crop').url()} className='first-picture' alt={person.name} loading="lazy" />
-                      )}
-                      {/* Quick facts if present */}
-                      {(person.height || person.eyeColor || person.hair) && (
-                        <dl>
-                          <div className='height'>
-                            {person.height ? (<><dt>Height</dt><dd>{person.height} cm</dd></>) : null}
-                          </div>
-                          <div className='hair'>
-                            {person.hair ? (<><dt>Hair</dt><dd>{person.hair}</dd></>) : null}
-                          </div>
-                          <div className='eye-color'>
-                            {person.eyeColor ? (<><dt>Eye color</dt><dd>{person.eyeColor}</dd></>) : null}
-                          </div>
-                        </dl>
-                      )}
-                    </div>
-                    {/* Second picture */}
-                    {isImageRef(person.secondPicture) && (
-                      <img src={urlFor(person.secondPicture).width(340).height(270).fit('crop').url()} className='second-picture' alt={`${person.name} – second`} loading="lazy"/>
+            <div className='top-section'>
+              <div className='left-cloumn'>
+                <div className='picture-section'>
+                  {/* First Picture */}
+                  <div className='firs-picture-row'>
+                    {isImageRef(person.picture) && (
+                      <img src={urlFor(person.picture).width(590).height(470).fit('crop').url()} className='first-picture' alt={person.name} loading="lazy" />
+                    )}
+                    {/* Quick facts if present */}
+                    {(person.height || person.eyeColor || person.hair) && (
+                      <dl>
+                        <div className='height'>
+                          {person.height ? (<><dt>Height</dt><dd>{person.height} cm</dd></>) : null}
+                        </div>
+                        <div className='hair'>
+                          {person.hair ? (<><dt>Hair</dt><dd>{person.hair}</dd></>) : null}
+                        </div>
+                        <div className='eye-color'>
+                          {person.eyeColor ? (<><dt>Eye color</dt><dd>{person.eyeColor}</dd></>) : null}
+                        </div>
+                      </dl>
                     )}
                   </div>
-                </div>
-                <div className='right-column'>
-                  {person.description && ( <p>{person.description}</p> )}
+                  {/* Second picture */}
+                  {isImageRef(person.secondPicture) && (
+                    <img src={urlFor(person.secondPicture).width(340).height(270).fit('crop').url()} className='second-picture' alt={`${person.name} – second`} loading="lazy"/>
+                  )}
                 </div>
               </div>
-              <div className='artist-name'>
-                <h1 className="first-name">{person.firstName}</h1>
+              <div className='right-column'>
+                {person.description && ( <p>{person.description}</p> )}
               </div>
-            </header>
+            </div>
+            <div className='artist-name'>
+              <h1 className="first-name">{person.firstName}</h1>
+            </div>
             <div className='portfolio'>
               <h1 className="last-name">{person.lastName}</h1>
             

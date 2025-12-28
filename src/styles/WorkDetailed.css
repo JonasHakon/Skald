@@ -67,29 +67,29 @@
     align-items: center;
 }
 
-.header-text {
+.work-detailed .header-text {
   height: 100vh;
 }
 
-.gallery-1 {
+.work-detailed .gallery-1 {
   height: 500px;
 }
 
-.cast-list {
+.work-detailed .cast-list {
   height: 900px;
 }
 
-.cast-img {
+.work-detailed .cast-img {
   height: 45vw;
 }
 
-.gallery-2 {
+.work-detailed .gallery-2 {
   height: 500px;
   margin-top: 15vh;
   margin-bottom: 20vh;
 }
 
-.video-section {
+.work-detailed .video-section {
   height: 100vh;
 }
  

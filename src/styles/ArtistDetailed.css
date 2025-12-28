@@ -40,7 +40,8 @@
   height: 50%;
 }
 
-.artist-page img {
+.artist-page .first-picture,
+.artist-page .second-picture {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   display: block;
@@ -55,8 +56,9 @@
   width: 100%;
 }
 
-.artist-page .work-page-section {
-  margin-top: 50px;
+.artist-page .page-section {
+  margin-top: 16vh;
+
 }
 
 .portfolio {
