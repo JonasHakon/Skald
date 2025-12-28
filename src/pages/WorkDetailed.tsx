@@ -7,8 +7,8 @@ import { Gallery } from '../components/Gallery'
 import type {Work} from '../types'
 import '../styles/WorkDetailed.css';
 
-import huisClosHeader from '../assets/huisClos/huisclosHeader.png';
-import castGroupPhoto from '../assets/huisClos/castgroupphoto.png';
+import huisClosHeader from '../assets/huisClos/HuisClosHeader.png'
+import castGroupPhoto from '../assets/huisClos/CastGroupPhoto.png';
 
 const QUERY = `
 *[_type == "work" && slug.current == $slug][0]{
