@@ -7,8 +7,16 @@ import { Gallery } from '../components/Gallery'
 import type {Work} from '../types'
 import '../styles/WorkDetailed.css';
 
-import huisClosHeader from '../assets/huisClos/HuisClosHeader.png'
+import huisClosHeader from '../assets/huisClos/HuisClosHeader.png';
 import castGroupPhoto from '../assets/huisClos/CastGroupPhoto.png';
+
+import decorationOne from '../assets/huisClos/DecorationOne.png';
+import decorationTwo from '../assets/huisClos/DecorationTwo.png';
+import decorationThree from '../assets/huisClos/DecorationThree.png';
+import decorationFour from '../assets/huisClos/DecorationFour.png';
+import decorationFive from '../assets/huisClos/DecorationFive.png';
+import decorationSix from '../assets/huisClos/DecorationSix.png';
+
 
 const QUERY = `
 *[_type == "work" && slug.current == $slug][0]{
@@ -73,9 +81,17 @@ export function WorkDetailed() {
       <section className="page-section header-text">
           <img src={huisClosHeader} alt='Huis Clos' />
       </section>
+      <div className='decoration decoration-left'>
+        <img src={decorationOne} alt='Decoration One' />
+      </div>
       <section className="page-section gallery-1">
         <Gallery items={work?.gallery1} text={TextOne} reversed={false} />
       </section>
+      <div className='decoration decoration-bottom decoration-right' >
+        <img src={decorationTwo} alt='Decoration Two' 
+          style={{ position: "absolute", top: 0, right: 0, transform: "none" }} 
+        />
+      </div>
       <section className="page-section cast-list">
         <div className='cast-box'>
           <div className='left-column'>
@@ -119,7 +135,6 @@ export function WorkDetailed() {
       <section className="page-section cast-img">
         <div className="cast-photo">
           <img src={castGroupPhoto} alt="Group photo" />
-
           <a className="hotspot hs-1" href="/artists/fiona-perez-carroll" aria-label="Fiona Perez Carroll" />
           <a className="hotspot hs-2" href="/artists/eimear-minihane" aria-label="Eimear Minihane" />
           <a className="hotspot hs-3" href="/artists/lorcan-patrick-dow" aria-label="Lorcàn Patrick Dow" />
@@ -128,6 +143,30 @@ export function WorkDetailed() {
       <section className="page-section gallery-2">
         <Gallery items={work?.gallery2} text={TextTwo} reversed={true} />
       </section>
+      <div className='decoration'
+        style={{ height: "100px"}}
+      >
+        <img src={decorationThree} alt='Decoration Three' />
+      </div>
+      <div className='decoration'
+        style={{ height: "100px"}}
+      >
+        <img src={decorationFour} alt='Decoration Four' />
+      </div>
+      <div className='decoration' 
+        style={{ height: "100px"}}
+      >
+        <img src={decorationFive} alt='Decoration Five'
+          style={{ right: 0 }} 
+        />
+      </div>
+      <div className='decoration' 
+        style={{ height: "100px", zIndex: 200}}
+      >
+        <img src={decorationSix} alt='Decoration Six'
+          style={{ right: 0 }} 
+        />
+      </div>
       <section className="page-section video-section">
         {loading && <p className="loading">Loading…</p>}
         {error && <p className="error">{error}</p>}

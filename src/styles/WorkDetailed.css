@@ -86,7 +86,6 @@
 .work-detailed .gallery-2 {
   height: 500px;
   margin-top: 15vh;
-  margin-bottom: 20vh;
 }
 
 .work-detailed .video-section {
@@ -170,6 +169,20 @@
 
 .work-detailed .cast-img img {
     width: 100%;
+}
+
+.work-detailed .decoration {
+  position: relative;
+  width: "100%";
+  height: 0;
+  overflow: visible;
+  z-index: 2;
+}
+
+.work-detailed .decoration img {
+  position: absolute;
+  width: auto;
+  transform: translateY(-50%);
 }
 
 .cast-photo{

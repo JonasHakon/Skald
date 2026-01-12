@@ -63,6 +63,7 @@
 
 .portfolio {
   width: 100%;
+  height: 90vh;
   color: var(--color-secondary);
   background-color: var(--color-primary);
 }

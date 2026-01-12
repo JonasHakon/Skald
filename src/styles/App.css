@@ -50,6 +50,7 @@ body {
   top: 0; left: 0; right: 0;
   height: auto;
   padding: 3vh 10vw;
+  z-index: 200;
 }
 
 .nav-container {

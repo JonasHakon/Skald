@@ -24,12 +24,12 @@ const PERSON_QUERY = `
 
 // Pull works where this person is involved (actor/director/crew)
 const WORKS_FOR_PERSON = `
-*[_type == "work" && ($id in actors[]._ref || director._ref == $id || $id in crew[]._ref)]
+*[_type == "work" && $id in people[]._ref]
   | order(date desc){
     name,
-    description,
-    // If author is a reference, resolve to the person's name; if it's already a string, return it as-is
-    "author": coalesce(author->name, author),
+    description1,
+    description2,
+    "author": author,
     slug,
     picture{ _type, asset }
   }
