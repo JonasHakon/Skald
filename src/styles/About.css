@@ -1,17 +1,24 @@
-.about-page .section-photo {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* ==============================================
+   About Page
+   ============================================== */
 
-    background-size: cover;        /* fills area, keeps proportions */
-    background-position: center;   /* centers the image */
-    background-repeat: no-repeat;  /* no tiling */
+/* --- Hero photo section --- */
+
+.about-page .section-photo {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .about-page .about-us-text {
-    width: 40vw;
+  width: 40vw;
 }
+
+/* --- Info text section --- */
 
 .about-page .section-text {
   display: flex;

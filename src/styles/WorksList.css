@@ -1,16 +1,24 @@
+/* ==============================================
+   Works List Page
+   ============================================== */
+
+/* --- Layout --- */
+
 .works-list .main-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
+/* --- Title header --- */
+
 .works-list .works-title {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .works-list .works-title img {
-    height: 25vh;
-    object-fit: cover;
+  height: 25vh;
+  object-fit: cover;
 }

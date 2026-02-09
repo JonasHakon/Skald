@@ -1,36 +1,49 @@
+/* ==============================================
+   Contact Page
+   ============================================== */
+
+/* --- Page layout --- */
+
 .contact-page .page-section {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    min-height: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 100%;
 }
+
+/* --- Title --- */
 
 .contact-page .page-title {
-    font-size: 160; 
-    max-width: 500px;
-    font-weight: 400;
-    margin: 0;
-    min-height: 100%;
+  font-size: 160px;
+  max-width: 500px;
+  font-weight: 400;
+  margin: 0;
+  min-height: 100%;
 }
 
+/* --- Form container --- */
+
 .contact-page .contact-form {
-    font-family: var(--font-secondary);
-    font-size: 18px;
-    font-weight: 300;
-    width: 500px;
-    min-height: 100%;
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  font-weight: 300;
+  width: 500px;
+  min-height: 100%;
 }
 
 .contact-page .form-group {
-    position: relative;
-    width: 100%;
-    margin: 30px 0px;
+  position: relative;
+  width: 100%;
+  margin: 30px 0;
 }
 
-.contact-page input, textarea {
-  background: transparent;  
+/* --- Inputs & textareas --- */
+
+.contact-page input,
+.contact-page textarea {
+  background: transparent;
   border: none;
   border-bottom: 1px solid var(--color-primary);
   color: var(--color-primary);
@@ -42,14 +55,21 @@
   font-weight: 300;
 }
 
+.contact-page textarea.autosize {
+  overflow: hidden;
+  resize: none;
+}
+
+/* --- Floating labels --- */
+
 .contact-page label {
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 100%;
-    color: #6d6d6d;
-    pointer-events: none;
-    transition: 0.2s ease all;
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 100%;
+  color: #6d6d6d;
+  pointer-events: none;
+  transition: 0.2s ease all;
 }
 
 .contact-page input:focus + label,
@@ -59,10 +79,7 @@
   top: -22px;
 }
 
-.contact-page textarea.autosize {
-  overflow: hidden;   /* no scrollbar */
-  resize: none;       /* remove manual resize handle */
-}
+/* --- Submit button --- */
 
 .contact-page .submit-button {
   background: transparent;
@@ -71,12 +88,12 @@
   padding: 0.6rem 1rem;
   font: inherit;
   line-height: 1;
-  border-radius: 0px;
+  border-radius: 0;
   cursor: pointer;
   box-shadow: none;
   -webkit-appearance: none;
   appearance: none;
-  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); 
+  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
   font-family: var(--font-secondary);
   font-size: 18px;
   font-weight: 300;
@@ -85,18 +102,19 @@
 .contact-page .submit-button:hover,
 .contact-page .submit-button:focus {
   transform: translateY(-2px);
-  outline: none;                    /* kill default ring */
+  outline: none;
   box-shadow: none;
-  border-radius: 0 !important;      /* belt-and-suspenders */
+  border-radius: 0 !important;
 }
 
+/* --- Autofill overrides --- */
 
 .contact-page input:-webkit-autofill,
 .contact-page textarea:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--color-secondary) inset !important; /* paint dark bg */
-  -webkit-text-fill-color: var(--color-primary) !important;                  /* force text color */
-  border-bottom-color: var(--color-primary) !important;                       /* keep underline */
-  transition: background-color 9999s ease-out 0s;                             /* avoid yellow flash */
+  -webkit-box-shadow: 0 0 0 1000px var(--color-secondary) inset !important;
+  -webkit-text-fill-color: var(--color-primary) !important;
+  border-bottom-color: var(--color-primary) !important;
+  transition: background-color 9999s ease-out 0s;
 }
 
 .contact-page input:-webkit-autofill:focus,
@@ -107,20 +125,20 @@
   -webkit-text-fill-color: var(--color-primary) !important;
 }
 
-/* Mobile styles */
+/* --- Responsive --- */
+
 @media (max-width: 1024px) {
   .contact-page .page-section {
-      margin-top: 15vh;
-      display: flex;
-      flex-direction: column;
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
   }
 
   .contact-page .page-title {
-    font-size: 80; 
+    font-size: 80px;
   }
 
   .contact-page .contact-form {
     width: 80vw;
   }
-
 }

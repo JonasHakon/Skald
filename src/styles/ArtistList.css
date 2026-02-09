@@ -1,10 +1,15 @@
+/* ==============================================
+   Artists List Page
+   ============================================== */
+
 @import "swiper/css";
+
+/* --- Swiper overrides --- */
 
 .artist-list .swiper-wrapper {
   align-items: center;
 }
 
-/* Slide layout is the max size */
 .artist-list .swiper-slide {
   width: 170px;
   height: 100vh;
@@ -14,27 +19,30 @@
   transition: transform 0.75s ease;
 }
 
-/* Image fills the slide, actual size controlled by scale */
 .artist-list .swiper-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
- .artist-list .carousel-viewport {
+/* --- Carousel layout --- */
+
+.artist-list .carousel-viewport {
   width: 100%;
-  overflow: hidden;  /* this is the key */
+  overflow: hidden;
   position: relative;
 }
 
 .artist-list .carousel-track {
-  margin-left: -25%; /* adjust as needed */
+  margin-left: -25%;
 }
+
+/* --- Slide content --- */
 
 .artist-list .slide-inner {
   position: relative;
-  width: 340px;   /* should match slideWidth in JS */
-  height: 430px;  /* height of main image */
+  width: 340px;
+  height: 430px;
 }
 
 .artist-list .slide-inner img.signature-image {
@@ -42,12 +50,14 @@
   width: 200px;
 }
 
+/* --- Signature overlay --- */
+
 .artist-list .signature-image {
   position: absolute;
   left: 50%;
-  bottom: -180px;   /* below the card area */
-  opacity: 0;      /* invisible when not active */
-  z-index: 1;      /* behind the main image */
+  bottom: -180px;
+  opacity: 0;
+  z-index: 1;
   pointer-events: none;
   will-change: transform, opacity;
 }

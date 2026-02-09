@@ -1,10 +1,17 @@
+/* ==============================================
+   Artist Detailed Page
+   ============================================== */
+
+/* --- Page layout --- */
+
 .artist-page .page-section {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100%;
+  margin-top: 16vh;
 }
 
 .artist-page .top-section {
@@ -14,6 +21,8 @@
   justify-content: space-between;
   margin-bottom: 200px;
 }
+
+/* --- Columns --- */
 
 .artist-page .left-cloumn {
   display: flex;
@@ -27,9 +36,18 @@
   padding: 12vh;
 }
 
+/* --- Pictures --- */
+
 .artist-page .picture-section {
   display: flex;
   flex-direction: row;
+}
+
+.artist-page .first-picture,
+.artist-page .second-picture {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
 }
 
 .artist-page .first-picture {
@@ -40,12 +58,7 @@
   height: 50%;
 }
 
-.artist-page .first-picture,
-.artist-page .second-picture {
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  display: block;
-}
+/* --- Quick facts --- */
 
 .artist-page .height,
 .artist-page .hair,
@@ -56,38 +69,36 @@
   width: 100%;
 }
 
-.artist-page .page-section {
-  margin-top: 16vh;
+/* --- Artist name --- */
 
+.artist-page .artist-name {
+  width: 100%;
 }
+
+.artist-page .first-name,
+.artist-page .last-name {
+  font-family: var(--font-primary);
+  font-size: 170px;
+  font-weight: 100;
+  padding: 0;
+}
+
+.artist-page .first-name {
+  margin: 0 0 -50px 10vh;
+  -webkit-text-stroke: 2px var(--color-primary);
+  z-index: 100;
+}
+
+.artist-page .last-name {
+  text-align: right;
+  margin: -50px 10vh 0 0;
+}
+
+/* --- Portfolio section --- */
 
 .artist-page .portfolio {
   width: 100%;
   height: 90vh;
   color: var(--color-secondary);
   background-color: var(--color-primary);
-}
-
-.artist-page .artist-name {
-  width: 100%;
-}
-
-.artist-page .first-name{
-  font-family: var(--font-primary);
-  font-size: 170px;
-  font-weight: 100;
-  margin: 0px 0px -50px 10vh;
-  padding: 0px;
-  -webkit-text-stroke: 2px var(--color-primary); /* Example: 2px wide black outline */
-  z-index: 100;
-
-}
-
-.artist-page .last-name {
-  font-family: var(--font-primary);
-  font-size: 170px;
-  text-align: right;
-  font-weight: 100;
-  margin: -50px 10vh 0px 0px;
-  padding: 0px;
 }
