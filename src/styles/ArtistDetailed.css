@@ -11,7 +11,7 @@
   justify-content: space-between;
   align-items: center;
   min-height: 100%;
-  margin-top: 16vh;
+  padding-top: 16vh;
 }
 
 .artist-page .top-section {
@@ -101,4 +101,99 @@
   height: 90vh;
   color: var(--color-secondary);
   background-color: var(--color-primary);
+}
+
+/* ==============================================
+   Mobile (≤ 1024px)
+   ============================================== */
+
+@media (max-width: 1024px) {
+
+  /* Prevent horizontal overflow */
+  .artist-page .main-content {
+    overflow-x: hidden;
+  }
+
+  /* --- Layout --- */
+
+  .artist-page .page-section {
+    padding-top: 10vh;
+  }
+
+  .artist-page .top-section {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 60px;
+  }
+
+  /* --- Columns --- */
+
+  .artist-page .left-cloumn {
+    width: 100%;
+  }
+
+  .artist-page .right-column {
+    padding: 5vw;
+  }
+
+  /* --- Pictures: side-by-side via grid, stats below --- */
+
+  .artist-page .picture-section {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto auto;
+    width: 100%;
+  }
+
+  /* Flatten the wrapper so its children join the grid */
+  .artist-page .firs-picture-row {
+    display: contents;
+  }
+
+  .artist-page .first-picture {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+  }
+
+  .artist-page .second-picture {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    align-self: end;
+  }
+
+  /* Stats span both picture columns */
+  .artist-page .picture-section dl {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 2vw 0 0;
+    padding: 0 4vw;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* --- Artist name --- */
+
+  .artist-page .first-name,
+  .artist-page .last-name {
+    font-size: 44px;
+  }
+
+  .artist-page .first-name {
+    margin: 0 0 0 5vw;
+  }
+
+  .artist-page .last-name {
+    margin: 0 5vw 0 0;
+  }
+
+  /* --- Portfolio --- */
+
+  .artist-page .portfolio {
+    height: auto;
+    min-height: 50vh;
+  }
 }

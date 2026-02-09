@@ -22,14 +22,11 @@ const PERSON_QUERY = `
 }
 `
 
-// Pull works where this person is involved (actor/director/crew)
+// Pull works where this person is referenced (actor/director/crew)
 const WORKS_FOR_PERSON = `
-*[_type == "work" && $id in people[]._ref]
+*[_type == "work" && references($id)]
   | order(date desc){
     name,
-    description1,
-    description2,
-    "author": author,
     slug,
     picture{ _type, asset }
   }

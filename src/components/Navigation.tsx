@@ -1,7 +1,7 @@
-// src/components/Layout.tsx
+// src/components/Navigation.tsx
+import { useState } from 'react'
 import type {ReactNode} from 'react'
 import {Link} from "react-router-dom";
-
 
 import ArtistsBlack from "../assets/ArtisitBlack.png";
 import ArtistsWhite from "../assets/ArtistWhite.png";
@@ -22,6 +22,7 @@ interface NavigationProps {
 
 
 export function Navigation({ children, className }: NavigationProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
   const isDark = className?.includes("dark-theme");
 
   const icons = {
@@ -31,28 +32,44 @@ export function Navigation({ children, className }: NavigationProps) {
     contact: isDark ? ContactWhite : ContactBlack,
   };
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <div className={className ? `navigation-wrapper ${className}` : "navigation-wrapper"}>
-      <nav className="navigation">
+      <nav className={`navigation ${menuOpen ? "menu-open" : ""}`}>
+
+        {/* Hamburger button — visible only on mobile */}
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+          <span className="hamburger-line" />
+        </button>
+
+        {/* Navigation links */}
         <div className="nav-container">
 
-          <Link to="/artists" className="nav-link">
-            <img src={icons.artists} alt="Artists" className="nav-icon" />
-          </Link>
-
-          <Link to="/works" className="nav-link">
-            <img src={icons.works} alt="Works" className="nav-icon" />
-          </Link>
-
-          <Link to="/" className="nav-link nav-link-home">
+          <Link to="/" className="nav-link nav-link-home" onClick={closeMenu}>
             Skald
           </Link>
 
-          <Link to="/about" className="nav-link">
+          <Link to="/artists" className="nav-link" onClick={closeMenu}>
+            <img src={icons.artists} alt="Artists" className="nav-icon" />
+          </Link>
+
+          <Link to="/works" className="nav-link" onClick={closeMenu}>
+            <img src={icons.works} alt="Works" className="nav-icon" />
+          </Link>
+
+          <Link to="/about" className="nav-link" onClick={closeMenu}>
             <img src={icons.about} alt="About" className="nav-icon" />
           </Link>
 
-          <Link to="/contact" className="nav-link">
+          <Link to="/contact" className="nav-link" onClick={closeMenu}>
             <img src={icons.contact} alt="Contact" className="nav-icon" />
           </Link>
 

@@ -6,10 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
 
 .home-page .home-section h1 {
   font-family: var(--font-primary);
   font-size: 20vh;
   font-weight: 100;
+}
+
+@media (max-width: 1024px) {
+  .home-page .home-section h1 {
+    font-size: 12vh;
+  }
 }

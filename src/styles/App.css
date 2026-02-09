@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 
-
 :root {
   /* Colors */
   --color-primary: #181818;
@@ -20,7 +19,7 @@
 }
 
 p {
-    white-space: pre-line;
+  white-space: pre-line;
 }
 
 body {
@@ -38,13 +37,16 @@ body {
   min-height: 100vh;
 }
 
-  p, dt, dd {
+p, dt, dd {
   font-family: var(--font-secondary);
   font-size: 18px;
   font-weight: 100;
 }
 
-/* ===== Header Navigation ===== */
+/* ==========================================================
+   Desktop Navigation
+   ========================================================== */
+
 .navigation {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -60,15 +62,17 @@ body {
 }
 
 .nav-link {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: var(--color-primary);
-  background-color: var(--color-secondary);
   font-family: var(--font-secondary);
-  font-size: 25;
+  font-size: 25px;
   font-weight: 100;
+  background: none;
   transform: translateY(0);
-  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); 
+  transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .nav-link:hover,
@@ -86,20 +90,118 @@ body {
   height: 4vw;
   object-fit: contain;
   display: block;
+  background: none;
 }
 
-.nav-link,
-.nav-icon {
-  background: none;   /* make sure nothing adds a background */
+/* Desktop: Skald in center — reorder links with order */
+@media (min-width: 1025px) {
+  .nav-link:nth-child(1) { order: 3; } /* Skald → center   */
+  .nav-link:nth-child(2) { order: 1; } /* Artists → 1st     */
+  .nav-link:nth-child(3) { order: 2; } /* Works → 2nd      */
+  .nav-link:nth-child(4) { order: 4; } /* About → 4th      */
+  .nav-link:nth-child(5) { order: 5; } /* Contact → 5th    */
 }
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Hamburger — hidden on desktop */
+.hamburger {
+  display: none;
 }
 
-/* ===== Compontent styling ===== */
+/* ==========================================================
+   Mobile Navigation (≤ 1024px)
+   ========================================================== */
+
+@media (max-width: 1024px) {
+
+  /* --- Hamburger button --- */
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    position: fixed;
+    top: 3vh;
+    right: 8vw;
+    z-index: 301;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 28px;
+    height: 1.5px;
+    background-color: var(--color-primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Animate lines into an X when open */
+  .menu-open .hamburger-line:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  .menu-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-open .hamburger-line:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* --- Nav bar (closed) --- */
+
+  .navigation {
+    padding: 3vh 8vw;
+  }
+
+  .nav-container {
+    display: none;
+  }
+
+  /* --- Fullscreen overlay (open) --- */
+
+  .navigation.menu-open {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--color-secondary);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navigation.menu-open .nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6vh;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Skald stays first in DOM, shown at top */
+  .navigation.menu-open .nav-link-home {
+    font-size: 6vh;
+  }
+
+  .navigation.menu-open .nav-icon {
+    height: 8vw;
+  }
+
+  .navigation.menu-open .nav-link:hover,
+  .navigation.menu-open .nav-link:focus {
+    transform: none;
+  }
+}
+
+/* ==========================================================
+   Component Styling
+   ========================================================== */
 
 .work-card {
   display: flex;
@@ -111,4 +213,3 @@ body {
   height: 50vh;
   object-fit: cover;
 }
-
