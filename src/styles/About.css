@@ -1,4 +1,4 @@
-.section-photo {
+.about-page .section-photo {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -9,17 +9,17 @@
     background-repeat: no-repeat;  /* no tiling */
 }
 
-.about-us-text {
+.about-page .about-us-text {
     width: 40vw;
 }
 
-.section-text {
+.about-page .section-text {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--color-primary);
 }
 
-.about-us-photo {
+.about-page .about-us-photo {
   width: 100%;
 }

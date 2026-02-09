@@ -185,18 +185,18 @@
   transform: translateY(-50%);
 }
 
-.cast-photo{
+.work-detailed .cast-photo{
   position: relative;
   width: 100%;
 }
 
-.cast-photo img{
+.work-detailed .cast-photo img{
   display: block;
   width: 100%;
   height: auto;
 }
 
-.cast-photo .hotspot{
+.work-detailed .cast-photo .hotspot{
   position: absolute;
   top: 0;
   bottom: 0;
@@ -204,19 +204,19 @@
   background: transparent;
 }
 
-/* 4 “columns” */
-.cast-photo .hs-1 { left: 0%;  width: 25%; }
-.cast-photo .hs-2 { left: 25%; width: 25%; }
-.cast-photo .hs-3 { left: 75%; width: 25%; }
+/* 4 "columns" */
+.work-detailed .cast-photo .hs-1 { left: 0%;  width: 25%; }
+.work-detailed .cast-photo .hs-2 { left: 25%; width: 25%; }
+.work-detailed .cast-photo .hs-3 { left: 75%; width: 25%; }
 
-/* Optional: show on hover while you’re positioning */
-.cast-photo.debug .hotspot{
+/* Optional: show on hover while you're positioning */
+.work-detailed .cast-photo.debug .hotspot{
   outline: 2px dashed rgba(255,255,255,0.7);
   background: rgba(255,255,255,0.06);
 }
 
 /* Accessibility: visible focus for keyboard users */
-.cast-photo .hotspot:focus-visible{
+.work-detailed .cast-photo .hotspot:focus-visible{
   outline: 2px solid currentColor;
   outline-offset: -2px;
 }

@@ -8,7 +8,7 @@ import AboutUsInfo from "../assets/AboutUsInfo.png";
 
 export function About() {
   return (
-    <Navigation className="contact-page dark-theme">
+    <Navigation className="about-page dark-theme">
       <div className="section-photo" style={{ backgroundImage: `url(${AboutUsPhoto})` }}>
         <img src={AboutUsText} alt="about-us-text" className='about-us-text' />
       </div>

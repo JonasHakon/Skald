@@ -33,7 +33,7 @@ export function WorkList() {
   
 
   return (
-    <Navigation className='artist-list'>
+    <Navigation className='works-list'>
       <div className='works'>
         <div className='works-title'>
           <img src={worksHeader} alt='works' />

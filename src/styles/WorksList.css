@@ -1,16 +1,16 @@
-.main-content {
+.works-list .main-content {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.works-title {
+.works-list .works-title {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.works-title img {
+.works-list .works-title img {
     height: 25vh;
     object-fit: cover;
 }
