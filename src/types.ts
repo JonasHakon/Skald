@@ -50,4 +50,5 @@ export type WorkCard = {
   author: string
   slug?: Slug
   picture?: ImageRef
+  testimonies?: Testimony[]
 }

@@ -10,15 +10,35 @@
   justify-content: space-evenly;
 }
 
+.works-list .works {
+  padding-top: 20vh;
+}
+
 /* --- Title header --- */
 
 .works-list .works-title {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 8vh;
 }
 
 .works-list .works-title img {
   height: 25vh;
+  max-height: 200px;
   object-fit: cover;
+}
+
+/* --- Work cards spacing --- */
+
+.works-list .work-card {
+  margin-bottom: 10vh;
+}
+
+.works-list .work-card:last-child {
+  margin-bottom: 8vh;
+}
+
+.works-list .work-card-image {
+  max-height: 45vh;
 }

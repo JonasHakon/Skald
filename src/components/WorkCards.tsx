@@ -1,7 +1,7 @@
 import {urlFor, isImageRef} from '../api/image'
 import type {WorkCard} from '../types'
 
-export function WorkCards({ items }: { items?: WorkCard[] | null }) {
+export function WorkCards({ items, artistName }: { items?: WorkCard[] | null, artistName?: string }) {
   if (!items?.length) return null
   return (
     <section className="work-page-section">
@@ -13,6 +13,11 @@ export function WorkCards({ items }: { items?: WorkCard[] | null }) {
 
           const slug = w.slug?.current
           const href = slug ? `/works/${slug}` : undefined
+          
+          const artistTestimony = artistName && w.testimonies
+            ? w.testimonies.find(t => t.name === artistName)
+            : null
+
           return (
             <article key={`${w.name}-${i}`} className="work-card">
               {href && (
@@ -26,6 +31,13 @@ export function WorkCards({ items }: { items?: WorkCard[] | null }) {
                     />
                   )}
                 </a>
+              )}
+              {artistTestimony && (
+                <div className="work-testimony">
+                  <blockquote className="testimony-text">
+                    "{artistTestimony.text}"
+                  </blockquote>
+                </div>
               )}
             </article>
           )

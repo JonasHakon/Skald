@@ -26,7 +26,6 @@ export function Carousel({ items }: { items: Artist[] }) {
   const centerClosestSlide = useCallback(() => {
     const swiper = swiperRef.current;
     if (!swiper || isUserInteractingRef.current) {
-      console.log('centerClosestSlide skipped:', { hasSwiper: !!swiper, isUserInteracting: isUserInteractingRef.current });
       return;
     }
 
@@ -43,14 +42,11 @@ export function Carousel({ items }: { items: Artist[] }) {
     });
 
     const closestSlide = swiper.slides[closestIndex] as SwiperSlideElement;
-    console.log('Closest slide:', { index: closestIndex, progress: closestSlide.progress });
     
     if (Math.abs(closestSlide.progress) < 0.05) {
-      console.log('Already centered, skipping');
       return;
     }
 
-    console.log('Starting magnetic centering animation');
     const targetTranslate = swiper.slidesGrid[closestIndex] * -1;
     const currentTranslate = swiper.translate;
     const duration = 500;
@@ -69,8 +65,6 @@ export function Carousel({ items }: { items: Artist[] }) {
 
       if (progress < 1) {
         requestAnimationFrame(animate);
-      } else {
-        console.log('Centering animation complete');
       }
     };
 
@@ -79,16 +73,10 @@ export function Carousel({ items }: { items: Artist[] }) {
 
   const startMagneticPull = useCallback(() => {
     if (rafIdRef.current) {
-      console.log('Canceling existing RAF before restarting');
       cancelAnimationFrame(rafIdRef.current);
       rafIdRef.current = null;
     }
     
-    if (monitoringRef.current) {
-      console.log('Magnetic pull already running, restarting');
-    }
-    
-    console.log('Starting magnetic pull');
     monitoringRef.current = true;
 
     const applyMagneticForce = () => {
@@ -100,11 +88,6 @@ export function Carousel({ items }: { items: Artist[] }) {
 
       const currentTranslate = swiper.translate;
       const delta = Math.abs(currentTranslate - lastTranslateRef.current);
-      
-      console.log('Magnetic force check:', { 
-        delta, 
-        isInteracting: isUserInteractingRef.current 
-      });
       
       lastTranslateRef.current = currentTranslate;
 
@@ -133,13 +116,6 @@ export function Carousel({ items }: { items: Artist[] }) {
           
           const adjustment = (targetTranslate - currentTranslate) * pullStrength;
           
-          console.log('Applying magnetic pull:', { 
-            distanceFromCenter, 
-            adjustment,
-            delta,
-            velocityFactor 
-          });
-          
           const newTranslate = currentTranslate + adjustment;
           swiper.setTranslate(newTranslate);
           swiper.updateProgress();
@@ -147,7 +123,6 @@ export function Carousel({ items }: { items: Artist[] }) {
         }
         
         if (delta < 0.05 && distanceFromCenter < 0.02) {
-          console.log('Centered and stopped, ending magnetic pull');
           monitoringRef.current = false;
           return;
         }
@@ -160,10 +135,8 @@ export function Carousel({ items }: { items: Artist[] }) {
   }, []);
 
   const handleInteractionStart = useCallback(() => {
-    console.log('Interaction START');
     isUserInteractingRef.current = true;
     if (rafIdRef.current) {
-      console.log('Canceling existing RAF');
       cancelAnimationFrame(rafIdRef.current);
       rafIdRef.current = null;
     }
@@ -171,7 +144,6 @@ export function Carousel({ items }: { items: Artist[] }) {
   }, []);
 
   const handleInteractionEnd = useCallback(() => {
-    console.log('Interaction END');
     isUserInteractingRef.current = false;
     lastTranslateRef.current = swiperRef.current?.translate ?? 0;
     startMagneticPull();
@@ -184,11 +156,9 @@ export function Carousel({ items }: { items: Artist[] }) {
     let wheelTimeout: NodeJS.Timeout | null = null;
 
     const handleWheel = () => {
-      console.log('Wheel event detected');
       handleInteractionStart();
       if (wheelTimeout) clearTimeout(wheelTimeout);
       wheelTimeout = setTimeout(() => {
-        console.log('Wheel stopped, starting velocity monitor');
         handleInteractionEnd();
       }, 150);
     };

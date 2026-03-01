@@ -28,7 +28,8 @@ const WORKS_FOR_PERSON = `
   | order(date desc){
     name,
     slug,
-    picture{ _type, asset }
+    picture{ _type, asset },
+    testimonies[]{ text, name }
   }
 `
 
@@ -111,7 +112,7 @@ export function ArtistDetailed() {
             
               {works && (
                 <div className="page-section">
-                  <WorkCards items={works} />
+                  <WorkCards items={works} artistName={person.name} />
                 </div>
               )}
             </div>
