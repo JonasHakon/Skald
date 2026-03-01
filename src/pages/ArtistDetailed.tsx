@@ -77,7 +77,7 @@ export function ArtistDetailed() {
                   {/* First Picture */}
                   <div className='firs-picture-row'>
                     {isImageRef(person.picture) && (
-                      <img src={urlFor(person.picture).width(590).height(470).fit('crop').url()} className='first-picture' alt={person.name} loading="lazy" />
+                      <img src={urlFor(person.picture).url()} className='first-picture' alt={person.name} loading="lazy" />
                     )}
                     {/* Quick facts if present */}
                     {(person.height || person.eyeColor || person.hair) && (
@@ -96,7 +96,7 @@ export function ArtistDetailed() {
                   </div>
                   {/* Second picture */}
                   {isImageRef(person.secondPicture) && (
-                    <img src={urlFor(person.secondPicture).width(340).height(270).fit('crop').url()} className='second-picture' alt={`${person.name} – second`} loading="lazy"/>
+                    <img src={urlFor(person.secondPicture).url()} className='second-picture' alt={`${person.name} – second`} loading="lazy"/>
                   )}
                 </div>
               </div>

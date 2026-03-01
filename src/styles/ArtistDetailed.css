@@ -19,7 +19,8 @@
   flex-direction: row;
   width: 90%;
   justify-content: space-between;
-  margin-bottom: 200px;
+  margin-bottom: 25vh;
+  gap: 5vw;
 }
 
 /* --- Columns --- */
@@ -27,13 +28,14 @@
 .artist-page .left-cloumn {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 .artist-page .right-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 12vh;
+  padding: 2vh 4vw;
 }
 
 /* --- Pictures --- */
@@ -52,10 +54,14 @@
 
 .artist-page .first-picture {
   height: 70vh;
+  width: auto;
+  max-width: 56vh;
 }
 
 .artist-page .second-picture {
-  height: 50%;
+  height: 35vh;
+  width: auto;
+  max-width: 28vh;
 }
 
 /* --- Quick facts --- */
@@ -90,8 +96,8 @@
 }
 
 .artist-page .last-name {
-  text-align: right;
-  margin: -50px 10vh 0 0;
+  text-align: left;
+  margin: -48px 0 0 10vh;
 }
 
 /* --- Portfolio section --- */
@@ -100,7 +106,6 @@
   width: 100%;
   color: var(--color-secondary);
   background-color: var(--color-primary);
-  padding: 4vh 0;
 }
 
 /* ==============================================
@@ -182,13 +187,10 @@
     font-size: 44px;
   }
 
-  .artist-page .first-name {
+  .artist-page .first-name, .artist-page .last-name {
     margin: 0 0 0 5vw;
   }
 
-  .artist-page .last-name {
-    margin: 0 5vw 0 0;
-  }
 
   /* --- Portfolio --- */
 
