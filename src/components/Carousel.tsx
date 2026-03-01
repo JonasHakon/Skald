@@ -23,54 +23,6 @@ export function Carousel({ items }: { items: Artist[] }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isUserInteractingRef = useRef<boolean>(false);
 
-  const centerClosestSlide = useCallback(() => {
-    const swiper = swiperRef.current;
-    if (!swiper || isUserInteractingRef.current) {
-      return;
-    }
-
-    let closestIndex = swiper.activeIndex;
-    let minProgress = Infinity;
-
-    swiper.slides.forEach((slide, index) => {
-      const slideEl = slide as SwiperSlideElement;
-      const absProgress = Math.abs(slideEl.progress);
-      if (absProgress < minProgress) {
-        minProgress = absProgress;
-        closestIndex = index;
-      }
-    });
-
-    const closestSlide = swiper.slides[closestIndex] as SwiperSlideElement;
-    
-    if (Math.abs(closestSlide.progress) < 0.05) {
-      return;
-    }
-
-    const targetTranslate = swiper.slidesGrid[closestIndex] * -1;
-    const currentTranslate = swiper.translate;
-    const duration = 500;
-    const startTime = Date.now();
-
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      const eased = 1 - Math.pow(1 - progress, 3);
-
-      const newTranslate = currentTranslate + (targetTranslate - currentTranslate) * eased;
-      swiper.setTranslate(newTranslate);
-      swiper.updateProgress();
-      swiper.updateSlidesClasses();
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, []);
-
   const startMagneticPull = useCallback(() => {
     if (rafIdRef.current) {
       cancelAnimationFrame(rafIdRef.current);
