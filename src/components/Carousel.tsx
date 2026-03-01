@@ -161,7 +161,7 @@ export function Carousel({ items }: { items: Artist[] }) {
                     <div className="slide-inner">
                       <img
                         className="main-image"
-                        src={urlFor(item.picture!).height(860).width(480).url()}
+                        src={urlFor(item.picture!).height(860).width(680).url()}
                         alt={item.name}
                         />
                       <img
