@@ -29,4 +29,6 @@
 
 .about-page .about-us-photo {
   width: 100%;
+  padding: 0 5vw;
+  box-sizing: border-box;
 }

@@ -230,3 +230,15 @@ p, dt, dd {
   line-height: 1.6;
   color: var(--color-text, #fff);
 }
+
+/* Mobile work cards */
+@media (max-width: 1024px) {
+  .work-card {
+    flex-direction: column;
+  }
+
+  .work-card img {
+    height: 30vh;
+    width: 100%;
+  }
+}

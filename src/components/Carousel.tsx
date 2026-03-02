@@ -47,6 +47,11 @@ export function Carousel({ items }: { items: Artist[] }) {
         let closestIndex = swiper.activeIndex;
         let minProgress = Infinity;
 
+        if (!swiper.slides) {
+          monitoringRef.current = false;
+          return;
+        }
+
         swiper.slides.forEach((slide, index) => {
           const slideEl = slide as SwiperSlideElement;
           const absProgress = Math.abs(slideEl.progress);

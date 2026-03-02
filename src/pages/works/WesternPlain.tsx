@@ -32,10 +32,10 @@ export function WesternPlain({ work, loading, error }: { work: Work | null; load
     <Navigation className="work-detailed">
       <div className="graphic graphic 1"></div>
       <section className="page-section header-text">
-          <h1>WESTERN PLAIN</h1>
+          <h1>OUT ON THE WESTERN PLAIN</h1>
       </section>
       <section className="page-section gallery-1">
-        <Gallery items={work?.gallery1} text={TextOne} reversed={false} />
+        <Gallery items={work?.gallery1 ?? []} text={TextOne} reversed={false} />
       </section>
       <section className="page-section cast-list">
         <div className='cast-box'>
@@ -68,7 +68,7 @@ export function WesternPlain({ work, loading, error }: { work: Work | null; load
         </div>
       </section>
       <section className="page-section gallery-2">
-        <Gallery items={work?.gallery2} text={TextTwo} reversed={true} />
+        <Gallery items={work?.gallery2 ?? []} text={TextTwo} reversed={true} />
       </section>
       <section className="page-section video-section">
         {loading && <p className="loading">Loading…</p>}

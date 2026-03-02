@@ -65,3 +65,23 @@
   height: 20px;
   width: 20px;
 }
+
+/* ==============================================
+   Mobile (≤ 1024px)
+   ============================================== */
+
+@media (max-width: 1024px) {
+  .artist-list .slide-inner {
+    width: 270px;
+    height: 340px;
+  }
+
+  .artist-list .slide-inner img.signature-image {
+    height: 160px;
+    width: 160px;
+  }
+
+  .artist-list .signature-image {
+    bottom: -140px;
+  }
+}

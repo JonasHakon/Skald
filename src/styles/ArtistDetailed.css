@@ -108,6 +108,10 @@
   background-color: var(--color-primary);
 }
 
+.artist-page .portfolio .page-section {
+  padding-bottom: 10vh;
+}
+
 /* ==============================================
    Mobile (≤ 1024px)
    ============================================== */
